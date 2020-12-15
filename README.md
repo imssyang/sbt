@@ -1,0 +1,2 @@
+# sbt
+/opt/sbt
