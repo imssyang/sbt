@@ -2,10 +2,33 @@
 #  The SBT Configuration file.                     #
 # ------------------------------------------------ #
 
+# Set sbt log level to debug
+#
+#-debug
+
+# Enable extra debugging for the incremental debugger
+#
+#-debug-inc
 
 # Disable ANSI color codes
 #
 #-no-colors
+
+# Enable or disable ANSI color codes (sbt 1.3 and above auto|always|true|false|never)
+#
+-color=auto
+
+# Enable or disable supershell (sbt 1.3 and above auto|always|true|false|never)
+#
+#-supershell=auto
+
+# Generate Trace Event report on shutdown (sbt 1.3 and above)
+#
+#-traces
+
+# Display task timings report on shutdown
+#
+#-timings
 
 # Starts sbt even if the current directory contains no sbt project.
 #
@@ -23,7 +46,7 @@
 #
 -ivy /opt/sbt/ivy2
 
-# set memory options
+# Set memory options (default: 1024)
 #
 #-mem   <integer>
 
@@ -31,19 +54,37 @@
 #
 #-no-share
 
-# Put SBT in offline mode.
+# Uses global caches, but does not use global ~/.sbt directory.
+#
+#-no-global
+
+# Turn on JVM debugging, open at the given port.
+#
+#-jvm-debug <port>
+
+# Disable interactive mode
+#
+#-batch
+
+# Put SBT in offline mode (deprecated).
 #
 #-offline
 
-# Sets the SBT version to use.
+# Sbt version (default: from project/build.properties if present, else latest release)
+#
 -sbt-version 1.4.5
+-sbt-jar /opt/sbt/bin/sbt-launch.jar
 
-# Scala version (default: latest release)
+# Java version (default: java from PATH, currently $(java -version |& grep version))
+#
+-java-home /opt/java
+
+# Scala version (default: latest release) (deprecated)
 #
 #-scala-home /opt/scala
 #-scala-version 2.13.4
 
-# java version (default: java from PATH, currently $(java -version |& grep version))
+# Jvm options and output control
 #
--java-home /opt/java
+-Dsbt.override.build.repos=true  # ignore local-repositories, use global-repositories
 
